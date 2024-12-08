@@ -248,9 +248,7 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 - 使用 DOM 操作动态生成视频卡片。
 - 处理 CORS 问题，确保图片和视频资源能够正常加载。
 
-# TODO
 
-1. 提取json中的steam url，转换为本地。对应修改videoload.js
 
 ### 视频播放器
 - 播放视频，并显示视频的标题、描述、时长、分类等信息。
@@ -258,3 +256,8 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 - 提供视频的缩略图，点击缩略图会播放视频。
 - 提供视频的播放链接，用户可以输入自定义链接，替换原本的视频。 
 
+
+
+# TODO
+
+1. 提取json中的steam url，转换为本地。对应修改videoload.js
