@@ -260,4 +260,5 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 
 ### 社交功能
 - 创建讨论区，用户可以发布和回复帖子，分享减肥经验。社交数据将存储在本地存储中。 
+- 用户可以收藏、点赞、评论帖子
 
