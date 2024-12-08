@@ -261,3 +261,6 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 # TODO
 
 1. 提取json中的steam url，转换为本地。对应修改videoload.js
+### 社交功能
+- 创建讨论区，用户可以发布和回复帖子，分享减肥经验。社交数据将存储在本地存储中。 
+
