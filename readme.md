@@ -247,3 +247,7 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 - 使用 `fetch` API 加载 `videos.json` 文件。
 - 使用 DOM 操作动态生成视频卡片。
 - 处理 CORS 问题，确保图片和视频资源能够正常加载。
+
+# TODO
+
+1. 提取json中的steam url，转换为本地。
