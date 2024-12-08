@@ -250,7 +250,7 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 
 # TODO
 
-1. 提取json中的steam url，转换为本地。
+1. 提取json中的steam url，转换为本地。对应修改videoload.js
 
 ### 视频播放器
 - 播放视频，并显示视频的标题、描述、时长、分类等信息。
