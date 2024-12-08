@@ -1,0 +1,196 @@
+/* CSS 变量定义 
+----------------------------------------*/
+:root {
+    --primary-color: #333;
+    --text-color: #666;
+    --border-color: #ddd;
+    --spacing-unit: 1rem;
+    --border-radius: 4px;
+    --form-group-spacing: 1.5rem;
+    --label-width: 100px;
+    --input-width: 250px;
+    --form-max-width: 800px;
+    --horizontal-gap: 1.5rem;
+    --vertical-gap: 1.25rem;
+    --label-height: 40px;
+    --label-spacing: 20px;
+    --input-spacing: 15px;
+    --container-padding: 2rem;
+    --mac-width: 1200px;
+    --ipad-width: 1024px;
+    --mobile-width: 480px;
+}
+
+/* 重置默认样式 
+----------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 计算器容器 
+----------------------------------------*/
+.calculator {
+    width: 100%;
+    max-width: var(--mac-width);
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+.calculator__title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.calculator__container {
+    width: 100%;
+    max-width: var(--form-max-width);
+    margin: 0 auto;
+    padding: var(--container-padding);
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calculator__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-group-spacing);
+}
+
+/* 表单项布局 - 左右布局
+----------------------------------------*/
+.form-item {
+    display: flex;           /* 启用 flex 布局 */
+    justify-content: flex-start; /* 从左开始排列 */
+    align-items: center;     /* 垂直居中 */
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 标签样式 - 左侧 */
+.form-item__label {
+    width: 120px;           /* 固定标签宽度 */
+    text-align: right;      /* 文字右对齐 */
+    padding-right: 15px;    /* 右侧内边距 */
+    flex: 0 0 auto;         /* 不伸缩、不压缩、保持原始大小 */
+}
+
+/* 输入容器样式 - 右侧 */
+.form-item__input-container {
+    width: 250px;           /* 固定输入框宽度 */
+    flex: 0 0 auto;         /* 不伸缩、不压缩、保持原始大小 */
+}
+
+/* 输入框样式 */
+.form-item__input,
+.form-item__select {
+    width: 100%;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+/* 单选按钮组样式 - 右侧 */
+.radio-group {
+    width: 250px;           /* 与输入框容器相同宽度 */
+    flex: 0 0 auto;         /* 不伸缩、不压缩、保持原始大小 */
+    display: flex;
+    gap: 1rem;             /* 单选按钮之间的间距 */
+    align-items: center;
+}
+
+/* 按钮样式 
+----------------------------------------*/
+.calculator__button {
+    margin-top: 2rem;
+    padding: 0.75rem 2.5rem;
+    align-self: center;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 结果区域样式 
+----------------------------------------*/
+.calculator__results {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border-top: 2px solid var(--border-color);
+}
+
+/* 响应式调整 - 更新断点 
+----------------------------------------*/
+/* Mac 屏幕 */
+@media (max-width: 1200px) {
+    .calculator__container {
+        max-width: 90%;
+    }
+}
+
+/* iPad 屏幕 */
+@media (max-width: 1024px) {
+    :root {
+        --container-padding: 1.5rem;
+        --label-width: 90px;
+        --input-width: 200px;
+    }
+
+    .calculator__container {
+        max-width: 95%;
+    }
+}
+
+/* 平板竖屏和小屏幕 */
+@media (max-width: 768px) {
+    :root {
+        --container-padding: 1rem;
+        --label-width: 80px;
+        --input-width: 180px;
+    }
+
+    .calculator__container {
+        max-width: 100%;
+        padding: var(--container-padding);
+    }
+
+    .form-item {
+        min-height: 45px;
+    }
+}
+
+/* 移动设备 */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 1rem;
+    }
+
+    .calculator__container {
+        padding: 1rem;
+    }
+
+    .form-item {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+    }
+
+    .form-item__label {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-item__input-container,
+    .radio-group {
+        width: 100%;
+        max-width: 100%;
+    }
+}

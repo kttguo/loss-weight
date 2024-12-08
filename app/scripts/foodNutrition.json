@@ -1,0 +1,23 @@
+[
+    {
+        "name": "米饭",
+        "calories": 130,
+        "carbs": 28,
+        "protein": 2.7,
+        "fat": 0.3
+    },
+    {
+        "name": "鸡肉",
+        "calories": 239,
+        "carbs": 0,
+        "protein": 27,
+        "fat": 14
+    },
+    {
+        "name": "牛奶",
+        "calories": 42,
+        "carbs": 5,
+        "protein": 3.4,
+        "fat": 1
+    }
+]
