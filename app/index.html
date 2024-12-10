@@ -66,11 +66,10 @@
         </div>
 
         <div id="results" class="calculator__results">
-            <p id="bmrResult" class="results__item"></p>
-            <p id="bmiResult" class="results__item"></p>
-            <p id="foodIntakeResult" class="results__item"></p>
-            <p id="nutrientResults" class="results__item"></p>
             <p id="totalCaloriesResult" class="results__item"></p>
+            <p id="proteinResult" class="results__item"></p>
+            <p id="carbResult" class="results__item"></p>
+            <p id="fatResult" class="results__item"></p>
         </div>
 
         <div id="videoContainer" class="mt-4"></div>
@@ -89,6 +88,13 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script src="scripts/dailyIntakeCalculator.js" defer></script>
+    <script src="scripts/nutritionCalculator.js" defer></script>
+    <script>
+        // 为 showFormButton 绑定点击事件
+        document.getElementById('showFormButton').addEventListener('click', () => {
+            const formContainer = document.querySelector('.calculator__container');
+            formContainer.style.display = 'block'; // 显示表单
+        });
+    </script>
 </body>
 </html> 
