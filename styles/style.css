@@ -194,3 +194,45 @@
         max-width: 100%;
     }
 }
+
+.suggestions-list {
+    border: 1px solid #ddd;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    width: calc(100% - 2px); /* 使下拉列表与输入框宽度一致 */
+    max-height: 150px; /* 限制下拉列表的高度 */
+    overflow-y: auto; /* 超出部分可滚动 */
+}
+
+.suggestions-list div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions-list div:hover {
+    background-color: #f1f1f1; /* 悬停效果 */
+}
+
+.history-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* 卡片之间的间距 */
+}
+
+.history-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(33% - 10px); /* 每行显示三张卡片 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.history-card h3 {
+    margin: 0 0 5px;
+}
+
+.history-card p {
+    margin: 2px 0;
+}
