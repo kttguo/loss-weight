@@ -38,7 +38,7 @@ function filterVideos(category) {
 // 加载视频数据
 async function loadVideos() {
     try {
-        const response = await fetch('./scripts/videodata.json'); // 从本地文件加载数据
+        const response = await fetch('./data/videodata.json'); // 从本地文件加载数据
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

@@ -39,17 +39,20 @@ function calculateNutrients(weight, height, activityLevel) {
     const carbGrams = carbCalories / 4;       // 每克碳水化合物 4 千卡
     const fatGrams = fatCalories / 9;          // 每克脂肪 9 千卡
 
+    // 将结果封装在一个对象中
     return {
-        proteinGrams,
-        carbGrams,
-        fatGrams,
-        totalCalories
+        nutrients: {
+            proteinGrams,
+            carbGrams,
+            fatGrams,
+            totalCalories
+        }
     };
 }
 
 // 显示计算结果
 function displayResults(weight, height, activityLevel) {
-    const nutrients = calculateNutrients(weight, height, activityLevel);
+    const { nutrients } = calculateNutrients(weight, height, activityLevel);
 
     // 显示结果
     document.getElementById('totalCaloriesResult').innerText = `每日所需总卡路里：${nutrients.totalCalories.toFixed(2)}千卡`;
