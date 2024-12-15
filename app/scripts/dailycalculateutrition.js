@@ -175,8 +175,9 @@ async function calculateTotalIntake() {
         <p>每日碳水化合物: ${totalCarbs.toFixed(2)} 克</p>
         <p>每日脂肪: ${totalFat.toFixed(2)} 克</p>
     `;
-
+    console.log('nutritionResult:', nutritionResult);
     // 更新每日摄入量展示
+    // document.getElementById('nutritionResult').innerHTML = nutritionResult.innerHTML;
     document.getElementById('dailyCaloriesResult').innerText = `每日卡路里: ${totalCalories.toFixed(2)} 千卡`;
     document.getElementById('dailyProteinResult').innerText = `每日蛋白质: ${totalProtein.toFixed(2)} 克`;
     document.getElementById('dailyCarbResult').innerText = `每日碳水化合物: ${totalCarbs.toFixed(2)} 克`;

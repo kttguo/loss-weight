@@ -15,7 +15,7 @@
             <h1 class="calculator__title">每天应该怎么吃</h1>
             <button id="showFormButton" class="btn btn-primary mb-3">每天应该怎么吃</button>
             
-            <div class="calculator__container" style="display: none;">
+            <div class="calculator__container" >
                 <form id="nutritionForm" class="calculator__form">
                     <div class="form-item">
                         <label class="form-item__label" for="weight">体重 (kg):</label>
@@ -78,11 +78,12 @@
 
         <!-- 第二部分：去运动模块 -->
         <section id="exerciseModule" class="exercise-section">
-            <div id="videoContainer" class="mt-4"></div>
-
-            <div class="col-12 mt-4 exercise-section">
-                <h2 class="text-center">去运动</h2>
-                <a href="videoList.html"  class="btn btn-primary">去运动</a>
+            <h2 class="text-center">去运动</h2>
+            <a href="videoList.html" class="btn btn-primary mb-3">去运动</a>
+            
+            <div class="input-group mb-3">
+                <input type="number" id="caloriesBurnedInput" placeholder="输入消耗的卡路里" class="form-control">
+                <button id="addCaloriesButton" class="btn btn-success">添加卡路里</button>
             </div>
         </section>       
         
@@ -147,6 +148,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <script src="scripts/nutritionCalculator.js" defer></script>
     <script src="scripts/dailycalculateutrition.js"></script> <!-- 更新后的路径 -->
+    <script src="scripts/result.js"></script>
+    
     <script>
         // 为 showFormButton 绑定点击事件
         document.getElementById('showFormButton').addEventListener('click', () => {
@@ -155,6 +158,13 @@
         });
     </script>
 
+    <section id="resultSection" class="result-section mt-4">
+        <h2 class="text-center">热量缺口结果</h2>
+        <div id="calorieDeficitResult" class="result-container">
+            <!-- 结果将在这里显示 -->
+            <p>请在上方输入您的运动消耗卡路里。</p>
+        </div>
+    </section>
 
 </body>
 </html> 
