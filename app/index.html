@@ -10,100 +10,111 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="calculator__title">每天应该怎么吃</h1>
-        <button id="showFormButton" class="btn btn-primary mb-3">每天应该怎么吃</button>
-        
-        <div class="calculator__container" style="display: none;">
-            <form id="nutritionForm" class="calculator__form">
-                <div class="form-item">
-                    <label class="form-item__label" for="weight">体重 (kg):</label>
-                    <div class="form-item__input-container">
-                        <input class="form-item__input" type="number" id="weight" required>
-                    </div>
-                </div>
-
-                <div class="form-item">
-                    <label class="form-item__label" for="height">身高 (cm):</label>
-                    <div class="form-item__input-container">
-                        <input class="form-item__input" type="number" id="height" required>
-                    </div>
-                </div>
-
-                <div class="form-item">
-                    <label class="form-item__label" for="age">年龄 (岁):</label>
-                    <div class="form-item__input-container">
-                        <input class="form-item__input" type="number" id="age" required>
-                    </div>
-                </div>
-
-                <div class="form-item">
-                    <label class="form-item__label">性别:</label>
-                    <div class="radio-group">
-                        <label class="radio-group__label">
-                            <input class="radio-group__input" type="radio" name="gender" value="male" checked>
-                            <span class="radio-group__text">男</span>
-                        </label>
-                        <label class="radio-group__label">
-                            <input class="radio-group__input" type="radio" name="gender" value="female">
-                            <span class="radio-group__text">女</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-item">
-                    <label class="form-item__label" for="activityLevel">活动水平:</label>
-                    <div class="form-item__input-container">
-                        <select class="form-item__select" id="activityLevel" required>
-                            <option value="light">轻体力劳动者</option>
-                            <option value="moderate">中体力劳动者</option>
-                            <option value="heavy">重体力劳动者</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="button" id="calculateButton" class="calculator__button">计算</button>
-            </form>
-        </div>
-
-        <div id="results" class="calculator__results">
-            <p id="totalCaloriesResult" class="results__item"></p>
-            <p id="proteinResult" class="results__item"></p>
-            <p id="carbResult" class="results__item"></p>
-            <p id="fatResult" class="results__item"></p>
-        </div>
-
-        <div id="videoContainer" class="mt-4"></div>
-
-        <div class="col-12">
-            <a href="videoList.html" class="btn btn-secondary mb-3">查看运动视频</a>
-        </div>
-
-        <section id="calcualorieClator">
-            <h2>今天吃了啥</h2>
-            <div class="input-group">
-                <div class="input-group">
-                    <input type="text" id="foodNameInput" placeholder="输入食物名称（如：苹果）">
-                    <div id="searchResult" class="result-container" style="position: relative;">
-                        <div id="suggestions" class="suggestions-list"></div> <!-- 下拉列表 -->
-                    </div>
-                    
-                    <div class="input-group">
-                        <select id="foodQuantitySelect" class="form-select" aria-label="选择食物克数">
-                            <option value="">选择克数</option>
-                            <!-- 生成从0克到1000克的选项，以50克递增 -->
-                            <script>
-                                for (let i = 0; i <= 1000; i += 50) {
-                                    document.write(`<option value="${i}">${i} 克</option>`);
-                                }
-                            </script>
-                        </select>
-                        <input type="number" id="foodQuantityInput" placeholder="或手动输入克数" min="0" class="form-control">
-                    </div>
-         
-                <button id="addFoodButton">添加食物</button>
-                <button id="calculatetodayTotalButton">计算总摄入量</button>
-            </div>
+         <!-- 第一部分：减肥饮食建议 -->
+        <section id="nutritionAdvice" class="nutrition-advice">
+            <h1 class="calculator__title">每天应该怎么吃</h1>
+            <button id="showFormButton" class="btn btn-primary mb-3">每天应该怎么吃</button>
             
+            <div class="calculator__container" style="display: none;">
+                <form id="nutritionForm" class="calculator__form">
+                    <div class="form-item">
+                        <label class="form-item__label" for="weight">体重 (kg):</label>
+                        <div class="form-item__input-container">
+                            <input class="form-item__input" type="number" id="weight" required>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item__label" for="height">身高 (cm):</label>
+                        <div class="form-item__input-container">
+                            <input class="form-item__input" type="number" id="height" required>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item__label" for="age">年龄 (岁):</label>
+                        <div class="form-item__input-container">
+                            <input class="form-item__input" type="number" id="age" required>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item__label">性别:</label>
+                        <div class="radio-group">
+                            <label class="radio-group__label">
+                                <input class="radio-group__input" type="radio" name="gender" value="male" checked>
+                                <span class="radio-group__text">男</span>
+                            </label>
+                            <label class="radio-group__label">
+                                <input class="radio-group__input" type="radio" name="gender" value="female">
+                                <span class="radio-group__text">女</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-item__label" for="activityLevel">活动水平:</label>
+                        <div class="form-item__input-container">
+                            <select class="form-item__select" id="activityLevel" required>
+                                <option value="light">轻体力劳动者</option>
+                                <option value="moderate">中体力劳动者</option>
+                                <option value="heavy">重体力劳动者</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" id="calculateButton" class="calculator__button">计算</button>
+                </form>
+            </div>
+
+            <div id="results" class="calculator__results">
+                <p id="totalCaloriesResult" class="results__item"></p>
+                <p id="proteinResult" class="results__item"></p>
+                <p id="carbResult" class="results__item"></p>
+                <p id="fatResult" class="results__item"></p>
+            </div>
+                
+        </section>
+
+        <!-- 第二部分：去运动模块 -->
+        <section id="exerciseModule" class="exercise-section">
+            <div id="videoContainer" class="mt-4"></div>
+
+            <div class="col-12 mt-4 exercise-section">
+                <h2 class="text-center">去运动</h2>
+                <a href="videoList.html"  class="btn btn-primary">去运动</a>
+            </div>
+        </section>       
+        
+
+        <!-- 第三部分：用户饮食记录 -->
+        <section id="dietRecord" class="diet-record">
+            <section id="calcualorieClator">
+                <h2>今天吃了啥</h2>
+                <div class="input-group mb-3">
+                    <input type="text" id="foodNameInput" placeholder="输入食物名称（如：苹果）" class="form-control">
+                    <div id="searchResult" class="result-container" style="position: absolute; max-width: 300px; max-height: 200px; overflow-y: auto; background: white; border: 1px solid #ccc; z-index: 1000;"></div>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <select id="foodQuantitySelect" class="form-select" aria-label="选择食物克数">
+                        <option value="">选择克数</option>
+                        <!-- 生成从0克到1000克的选项，以50克递增 -->
+                        <script>
+                            for (let i = 0; i <= 1000; i += 50) {
+                                document.write(`<option value="${i}">${i} 克</option>`);
+                            }
+                        </script>
+                    </select>
+                    <input type="number" id="foodQuantityInput" placeholder="或手动输入克数" min="0" class="form-control">
+                </div>
+    
+                <div class="input-group">
+                    <button id="addFoodButton" class="btn btn-primary">添加食物</button>
+                   
+                </div>
+            </section>
+    
             <h3 class="mt-4 text-center">今天吃了啥</h3> <!-- 添加食物列表标题 -->
             <table id="foodList" class="result-table table table-striped">
                 <thead>
@@ -120,20 +131,17 @@
                     <!-- 动态添加食物 -->
                 </tbody>
             </table>
-
-
-
+    
+            <button id="calculatetodayTotalButton" class="btn btn-primary">计算总摄入量</button>
             <div id="searchResult" class="result-container"></div> <!-- 用于显示查找结果 -->
             
             <h3 class="mt-4 text-center"></h3> <!-- 添加营养结果标题 -->
-           <!-- 用于展示营养结果的区域 -->
-        <div id="nutritionResult" class="result-container mt-4">
-            <!-- 计算总摄入量的结果将显示在这里 -->
-        </div>
+            <!-- 用于展示营养结果的区域 -->
+            <div id="nutritionResult" class="result-container mt-4">
+                <!-- 计算总摄入量的结果将显示在这里 -->
+            </div>
         </section>
-
-       
-
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>

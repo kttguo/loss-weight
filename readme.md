@@ -412,4 +412,4 @@ document.getElementById('calculateButton').addEventListener('click', calculateDa
 欢迎任何形式的贡献！请提交问题或拉取请求。
 
 ## 许可证
-本项目采用 MIT 许可证，详情请参阅 LICENSE 文件。
+本项目采用 MIT 许可证，详情请参阅 LICENSE 文件。   

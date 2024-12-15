@@ -236,3 +236,28 @@
 .history-card p {
     margin: 2px 0;
 }
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* 增加底部间距 */
+}
+
+.input-group input,
+.input-group select {
+    margin-right: 10px; /* 增加输入框和选择框之间的间距 */
+    flex: 1; /* 使输入框和选择框占据可用空间 */
+}
+
+button {
+    margin-left: 10px; /* 增加按钮之间的间距 */
+}
+
+.result-container {
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px; /* 限制高度 */
+    overflow-y: auto; /* 添加滚动条 */
+    position: absolute; /* 绝对定位 */
+    z-index: 1000; /* 确保在其他元素之上 */
+}
