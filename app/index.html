@@ -81,26 +81,58 @@
         <section id="calcualorieClator">
             <h2>今天吃了啥</h2>
             <div class="input-group">
-                <input type="text" id="foodNameInput" placeholder="输入食物名称（如：苹果）">
-                <input type="number" id="foodQuantityInput" placeholder="输入食物克数（如：100克）" min="1">
+                <div class="input-group">
+                    <input type="text" id="foodNameInput" placeholder="输入食物名称（如：苹果）">
+                    <div id="searchResult" class="result-container" style="position: relative;">
+                        <div id="suggestions" class="suggestions-list"></div> <!-- 下拉列表 -->
+                    </div>
+                    
+                    <div class="input-group">
+                        <select id="foodQuantitySelect" class="form-select" aria-label="选择食物克数">
+                            <option value="">选择克数</option>
+                            <!-- 生成从0克到1000克的选项，以50克递增 -->
+                            <script>
+                                for (let i = 0; i <= 1000; i += 50) {
+                                    document.write(`<option value="${i}">${i} 克</option>`);
+                                }
+                            </script>
+                        </select>
+                        <input type="number" id="foodQuantityInput" placeholder="或手动输入克数" min="0" class="form-control">
+                    </div>
+         
                 <button id="addFoodButton">添加食物</button>
-                <button id="calculateTotalButton">计算总摄入量</button>
+                <button id="calculatetodayTotalButton">计算总摄入量</button>
             </div>
             
-            <div id="searchResult" class="result-container" style="position: relative;">
-                <div id="suggestions" class="suggestions-list"></div> <!-- 下拉列表 -->
-            </div>
+            <h3 class="mt-4 text-center">今天吃了啥</h3> <!-- 添加食物列表标题 -->
+            <table id="foodList" class="result-table table table-striped">
+                <thead>
+                    <tr>
+                        <th>食物名称</th>
+                        <th>数量</th>
+                        <th>卡路里</th>
+                        <th>蛋白质</th>
+                        <th>碳水化合物</th>
+                        <th>脂肪</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 动态添加食物 -->
+                </tbody>
+            </table>
+
+
 
             <div id="searchResult" class="result-container"></div> <!-- 用于显示查找结果 -->
             
-            <div id="nutritionResult" class="result-container"></div> <!-- 用于显示总摄入量 -->
+            <h3 class="mt-4 text-center"></h3> <!-- 添加营养结果标题 -->
+           <!-- 用于展示营养结果的区域 -->
+        <div id="nutritionResult" class="result-container mt-4">
+            <!-- 计算总摄入量的结果将显示在这里 -->
+        </div>
         </section>
 
-        <h2>历史记录</h2>
-        <div id="historyList" class="history-container">
-            <!-- 动态添加历史记录 -->
-        </div>
-        <button id="clearHistoryButton">清除历史记录</button>
+       
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
