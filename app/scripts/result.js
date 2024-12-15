@@ -33,48 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log(foodEntries); // 在添加食物后输出
 
-async function calculateTotalIntake() {
-    const foodList = document.getElementById('foodList'); // 获取食物列表
-    const rows = foodList.getElementsByTagName('tr'); // 获取所有行
-    let totalCalories = 0;
-    let totalProtein = 0;
-    let totalCarbs = 0;
-    let totalFat = 0;
+import { getTotalCalories, setTotalCalories } from './dailycalculateutrition.js';
 
-    // 遍历每一行以提取食物名称和数量
-    for (const row of rows) {
-        const cells = row.getElementsByTagName('td');
-        if (cells.length > 0) {
-            const foodName = cells[0].innerText; // 食物名称
-            const quantity = parseFloat(cells[1].innerText); // 食物数量
+setTotalCalories(100); // 修改 totalCalories 的值
 
-            const foodData = await loadFoodData(); // 加载食物数据
-            const food = foodData.find(item => item.foodName.includes(foodName));
-            if (food) {
-                totalCalories += (parseFloat(food.calories) * quantity / 100);
-                totalProtein += (parseFloat(food.protein) * quantity / 100);
-                totalCarbs += (parseFloat(food.carbs) * quantity / 100);
-                totalFat += (parseFloat(food.fat) * quantity / 100);
-            } else {
-                alert(`未找到名为 "${foodName}" 的食物`);
-            }
-        }
-    }
+const totalCalories = getTotalCalories(); // 获取 totalCalories 的值
+console.log('用户摄入的卡路里:', totalCalories); // 输出的将是0，因为在导入时 totalCalories 的值是0
 
-    // 更新 DOM 显示结果
-    const dailyCaloriesResult = document.getElementById('dailyCaloriesResult');
-    const dailyProteinResult = document.getElementById('dailyProteinResult');
-    const dailyCarbResult = document.getElementById('dailyCarbResult');
-    const dailyFatResult = document.getElementById('dailyFatResult');
-    const nutritionResult = document.getElementById('nutritionResult');
+// 判断是否制造了热量缺口
+const dailyCaloricNeed = 2000; // 假设的每日卡路里需求
+if (totalCalories < dailyCaloricNeed) {
+    console.log('用户制造了热量缺口');
+} else {
+    console.log('用户没有制造热量缺口');
+}
 
-    if (dailyCaloriesResult && dailyProteinResult && dailyCarbResult && dailyFatResult && nutritionResult) {
-        dailyCaloriesResult.innerText = `每日卡路里: ${totalCalories.toFixed(2)} 千卡`;
-        dailyProteinResult.innerText = `每日蛋白质: ${totalProtein.toFixed(2)} 克`;
-        dailyCarbResult.innerText = `每日碳水化合物: ${totalCarbs.toFixed(2)} 克`;
-        dailyFatResult.innerText = `每日脂肪: ${totalFat.toFixed(2)} 克`;
-        nutritionResult.innerText = `营养结果: 卡路里 ${totalCalories.toFixed(2)} 千卡, 蛋白质 ${totalProtein.toFixed(2)} 克, 碳水化合物 ${totalCarbs.toFixed(2)} 克, 脂肪 ${totalFat.toFixed(2)} 克`;
-    } else {
-        console.error('某些结果元素未找到');
-    }
+document.addEventListener('caloriesUpdated', (event) => {
+    const totalCalories = event.detail.totalCalories;
+    console.log('用户摄入的卡路里:', totalCalories);
+});
+
+import { calculateTotalIntake } from './dailycalculateutrition.js';
+
+async function checkCalories() {
+    const totalCalories = await calculateTotalIntake();
+    console.log('用户摄入的卡路里:', totalCalories);
 }
