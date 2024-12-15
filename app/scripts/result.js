@@ -34,29 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log(foodEntries); // 在添加食物后输出
 
 async function calculateTotalIntake() {
-    const foodData = await loadFoodData(); // 加载食物数据
+    const foodList = document.getElementById('foodList'); // 获取食物列表
+    const rows = foodList.getElementsByTagName('tr'); // 获取所有行
     let totalCalories = 0;
     let totalProtein = 0;
     let totalCarbs = 0;
     let totalFat = 0;
 
-    for (const entry of foodEntries) {
-        const food = foodData.find(item => item.foodName.includes(entry.name));
-        if (food) {
-            const quantity = entry.quantity;
-            totalCalories += (parseFloat(food.calories) * quantity / 100);
-            totalProtein += (parseFloat(food.protein) * quantity / 100);
-            totalCarbs += (parseFloat(food.carbs) * quantity / 100);
-            totalFat += (parseFloat(food.fat) * quantity / 100);
-        } else {
-            alert(`未找到名为 "${entry.name}" 的食物`);
+    // 遍历每一行以提取食物名称和数量
+    for (const row of rows) {
+        const cells = row.getElementsByTagName('td');
+        if (cells.length > 0) {
+            const foodName = cells[0].innerText; // 食物名称
+            const quantity = parseFloat(cells[1].innerText); // 食物数量
+
+            const foodData = await loadFoodData(); // 加载食物数据
+            const food = foodData.find(item => item.foodName.includes(foodName));
+            if (food) {
+                totalCalories += (parseFloat(food.calories) * quantity / 100);
+                totalProtein += (parseFloat(food.protein) * quantity / 100);
+                totalCarbs += (parseFloat(food.carbs) * quantity / 100);
+                totalFat += (parseFloat(food.fat) * quantity / 100);
+            } else {
+                alert(`未找到名为 "${foodName}" 的食物`);
+            }
         }
     }
-
-    console.log('Total Calories:', totalCalories);
-    console.log('Total Protein:', totalProtein);
-    console.log('Total Carbs:', totalCarbs);
-    console.log('Total Fat:', totalFat);
 
     // 更新 DOM 显示结果
     const dailyCaloriesResult = document.getElementById('dailyCaloriesResult');

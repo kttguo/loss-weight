@@ -114,7 +114,7 @@ async function addFood() {
             alert('请选择有效克数');
             return; // 退出函数
         }
-
+        foodEntries.push({ name: foodName, quantity: foodQuantity });
             // 获取食物的营养信息
     const foodData = await loadFoodData(); // 加载食物数据
     const food = foodData.find(item => item.foodName.includes(foodName));
@@ -168,6 +168,7 @@ async function calculateTotalIntake() {
 
     // 更新营养结果展示
     const nutritionResult = document.getElementById('nutritionResult');
+    nutritionResult.style.display = 'block'; // 显示结果区域
     nutritionResult.innerHTML = `
         <h3>总摄入量</h3>
         <p>每日卡路里: ${totalCalories.toFixed(2)} 千卡</p>
@@ -176,12 +177,6 @@ async function calculateTotalIntake() {
         <p>每日脂肪: ${totalFat.toFixed(2)} 克</p>
     `;
     console.log('nutritionResult:', nutritionResult);
-    // 更新每日摄入量展示
-    // document.getElementById('nutritionResult').innerHTML = nutritionResult.innerHTML;
-    document.getElementById('dailyCaloriesResult').innerText = `每日卡路里: ${totalCalories.toFixed(2)} 千卡`;
-    document.getElementById('dailyProteinResult').innerText = `每日蛋白质: ${totalProtein.toFixed(2)} 克`;
-    document.getElementById('dailyCarbResult').innerText = `每日碳水化合物: ${totalCarbs.toFixed(2)} 克`;
-    document.getElementById('dailyFatResult').innerText = `每日脂肪: ${totalFat.toFixed(2)} 克`;
 }
 
 // 绑定事件
